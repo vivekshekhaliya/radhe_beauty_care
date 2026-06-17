@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #C89B3C;
+  --color-primary-hover: #1E5C50;
+  --color-accent: #E2C36B;
+  --color-accent-hover: #C89B3C;
+  --color-dark: #050505;
+  --color-secondary: #111111;
+  --color-muted: #BEBEBE;
+  --color-peacock: #1E5C50;
+  --color-emerald: #2D7A63;
+  
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+}
+
+/* Base resets & utilities */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: #ffffff;
+    background-color: #050505;
+  }
+  
+  body {
+    background-color: #050505;
+    color: #ffffff;
+    @apply antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.02em;
+  }
+
+  /* Awwwards effect: Hide standard cursor on desktop screens */
+  @media (min-width: 1024px) {
+    html, body {
+      cursor: none;
+    }
+    a, button, input, select, textarea, [role="button"] {
+      cursor: none;
+    }
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 155, 60, 0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 155, 60, 0.6);
+}
+
+/* Keyframe Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulseBlob {
+  0% { transform: scale(1) translate(0px, 0px); }
+  33% { transform: scale(1.1) translate(30px, -50px); }
+  66% { transform: scale(0.95) translate(-20px, 20px); }
+  100% { transform: scale(1) translate(0px, 0px); }
+}
+
+@keyframes borderGlow {
+  0% { border-color: rgba(255, 255, 255, 0.12); }
+  50% { border-color: rgba(200, 155, 60, 0.45); }
+  100% { border-color: rgba(255, 255, 255, 0.12); }
+}
+
+/* Utility Animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-blob-pulse {
+  animation: pulseBlob 20s ease-in-out infinite;
+}
+
+/* Frosted Glassmorphism Card (28px border radius, 20px blur) */
+.frosted-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+}
+
+/* Glass Navbar styling */
+.glass-nav {
+  background: rgba(5, 5, 5, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Golden text and gradient highlights */
+.gold-text-gradient {
+  background: linear-gradient(135deg, #C89B3C 0%, #E2C36B 50%, #C89B3C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.emerald-glow {
+  box-shadow: 0 0 40px rgba(45, 122, 99, 0.15);
+}
+
+.gold-glow {
+  box-shadow: 0 0 35px rgba(200, 155, 60, 0.12);
+}
+
+.gold-glow-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gold-glow-hover:hover {
+  border-color: rgba(200, 155, 60, 0.4);
+  box-shadow: 0 0 40px rgba(200, 155, 60, 0.22);
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* Hide scrollbar for category items */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
