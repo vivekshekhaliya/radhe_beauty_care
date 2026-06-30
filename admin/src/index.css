@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #062B04;
+  --color-primary-hover: #062B04;
+  --color-accent: #B1A96E;
+  --color-accent-hover: #B1A96E;
+  --color-dark: #F3F4F6;
+  /* Light grey backdrop */
+  --color-secondary: #FFFFFF;
+  /* Pure white containers/panels */
+  --color-muted: #6B7280;
+  /* Neutral grey text */
+  --color-peacock: #1E5C50;
+  --color-emerald: #2D7A63;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+}
+
+/* Base resets & utilities */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: #111827;
+    /* Dark charcoal text */
+    background-color: #F3F4F6;
+  }
+
+  body {
+    background-color: #F3F4F6;
+    color: #111827;
+    margin: 0;
+    overflow-x: hidden;
+  }
+}
+
+/* Veritas-style clean white cards */
+.glass-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E5E7EB !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02) !important;
+  border-radius: 20px !important;
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px rgba(215, 178, 108, 0.05);
+}
+
+.gold-glow-hover:hover {
+  box-shadow: 0 4px 20px rgba(215, 178, 108, 0.12);
+  border-color: rgba(215, 178, 108, 0.4);
+  transition: all 0.3s ease;
+}
+
+.gold-border {
+  border-color: rgba(215, 178, 108, 0.2);
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #E2C36B 0%, #D7B26C 100%);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #111827 30%, #D7B26C 70%, #E2C36B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbar in light theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3F4F6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D7B26C;
+}
+
+/* Custom Form elements styling */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0) sepia(10%) saturate(100%) hue-rotate(0deg);
+  cursor: pointer;
+}
+
+/* Clean forms & inputs layout overrides */
+input,
+select,
+textarea {
+  background-color: #FFFFFF !important;
+  border: 1px solid #D1D5DB !important;
+  color: #111827 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  background-color: #FFFFFF !important;
+  border-color: #062B04 !important;
+  box-shadow: 0 0 0 3px rgba(6, 43, 4, 0.2) !important;
+  outline: none !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9CA3AF !important;
+}
+
+/* Table light formatting */
+thead {
+  background-color: #F9FAFB !important;
+}
+
+thead th {
+  color: #374151 !important;
+  border-bottom: 1px solid #E5E7EB !important;
+}
+
+tbody tr {
+  border-bottom: 1px solid #F3F4F6 !important;
+}
+
+tbody tr:hover {
+  background-color: #F9FAFB !important;
+}
+
+/* Layout overrides for light UI mapping */
+
+/* 1. Sidebar light theme overrides */
+aside {
+  background-color: #FFFFFF !important;
+  border-right: 1px solid #E5E7EB !important;
+}
+
+aside button,
+aside a,
+aside span {
+  color: #374151 !important;
+}
+
+aside button:hover,
+aside a:hover {
+  color: #111827 !important;
+}
+
+aside .hover\:text-primary:hover {
+  color: #062B04 !important;
+}
+
+aside .hover\:bg-primary\/10:hover {
+  background-color: rgba(6, 43, 4, 0.08) !important;
+}
+
+aside .bg-primary\/10 {
+  background-color: rgba(6, 43, 4, 0.12) !important;
+}
+
+aside .text-primary {
+  color: #062B04 !important;
+}
+
+aside .border-white\/5 {
+  border-color: #F3F4F6 !important;
+}
+
+aside .bg-\[\#0e0e0e\]\/50 {
+  background-color: #FAFBFB !important;
+}
+
+/* 2. Top Header Navigation light overrides */
+header {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-bottom: 1px solid #E5E7EB !important;
+}
+
+header button,
+header span,
+header p,
+header div {
+  color: #374151 !important;
+}
+
+header .border-white\/5 {
+  border-color: #E5E7EB !important;
+}
+
+/* 3. Main content area typography contrast adjustments */
+main .text-white,
+main h1,
+main h2,
+main h3,
+main h4 {
+  color: #111827 !important;
+}
+
+main .text-white\/90 {
+  color: #1F2937 !important;
+}
+
+main .text-white\/80 {
+  color: #374151 !important;
+}
+
+main .text-white\/70,
+main .text-white\/60 {
+  color: #4B5563 !important;
+}
+
+main .text-white\/50 {
+  color: #9CA3AF !important;
+}
+
+main .text-muted {
+  color: #6B7280 !important;
+}
+
+main .border-white\/5,
+main .border-white\/10 {
+  border-color: #E5E7EB !important;
+}
+
+main .divide-white\/5 {
+  border-color: #E5E7EB !important;
+}
+
+main .bg-white\/5 {
+  background-color: #EEF2F6 !important;
+}
+
+main .bg-white\/5:hover {
+  background-color: #E2E8F0 !important;
+}
+
+main .border-white\/10 {
+  border-color: #D1D5DB !important;
+}
+
+/* SVG trends chart adjustments */
+svg line {
+  stroke: #E5E7EB !important;
+}
+
+svg path[stroke="rgba(255,255,255,0.05)"] {
+  stroke: #E5E7EB !important;
+}
+
+svg text {
+  fill: #6B7280 !important;
+}
+
+/* Dialog & Popovers light formatting */
+div[role="dialog"] .glass-card,
+.fixed .glass-card {
+  background-color: #FFFFFF !important;
+  color: #111827 !important;
+  border-color: #E5E7EB !important;
+}
+
+/* Clean light table wrapper overrides */
+main .bg-\[\#0e0e0e\]\/50 {
+  background-color: #FFFFFF !important;
+  border-color: #E5E7EB !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02) !important;
+}
+
+main .bg-\[\#111111\]\/45 {
+  background-color: #FFFFFF !important;
+  border-color: #E5E7EB !important;
+}
+
+/* Force table headers to be light and clean */
+main table thead {
+  background-color: #F9FAFB !important;
+}
+
+/* Force table body text to be dark grey/black */
+main table tbody {
+  color: #1F2937 !important;
+}
+
+/* Force table cells and nested text elements to be dark grey/black */
+main table tbody tr td,
+main table tbody tr td span,
+main table tbody tr td p,
+main table tbody tr td div {
+  color: #1F2937 !important;
+}
+
+/* Row hover backdrop styling */
+main table tbody tr:hover {
+  background-color: #F9FAFB !important;
+}
+
+/* Status badge color alignment in light table */
+main table tbody tr td span.bg-green-500\/10 {
+  background-color: rgba(34, 197, 94, 0.15) !important;
+  color: #16a34a !important;
+  border-color: rgba(34, 197, 94, 0.25) !important;
+}
+
+main table tbody tr td span.bg-white\/5 {
+  background-color: #F3F4F6 !important;
+  color: #4B5563 !important;
+  border-color: #E5E7EB !important;
+}
+
+/* Force all elements with primary green background and their nested elements to use white text for readability */
+.bg-primary,
+.bg-primary *,
+button.bg-primary,
+button.bg-primary *,
+a.bg-primary,
+a.bg-primary * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
