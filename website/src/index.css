@@ -1,0 +1,451 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #062B04;
+  --color-primary-hover: #062B04;
+  --color-accent: #B1A96E;
+  --color-accent-hover: #B1A96E;
+  --color-dark: #F3F4F6;
+  --color-secondary: #FFFFFF;
+  --color-muted: #6B7280;
+  --color-peacock: #1E5C50;
+  --color-emerald: #2D7A63;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+}
+
+/* Base resets & utilities */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: #111827;
+    background-color: #F3F4F6;
+  }
+
+  body {
+    background-color: #F3F4F6;
+    color: #111827;
+    @apply antialiased overflow-x-hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.02em;
+  }
+
+  /* Awwwards effect: Hide standard cursor on desktop screens */
+  @media (min-width: 1024px) {
+
+    html,
+    body {
+      cursor: none;
+    }
+
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    [role="button"] {
+      cursor: none;
+    }
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3F4F6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 155, 60, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 155, 60, 0.6);
+}
+
+/* Keyframe Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulseBlob {
+  0% {
+    transform: scale(1) translate(0px, 0px);
+  }
+
+  33% {
+    transform: scale(1.1) translate(30px, -50px);
+  }
+
+  66% {
+    transform: scale(0.95) translate(-20px, 20px);
+  }
+
+  100% {
+    transform: scale(1) translate(0px, 0px);
+  }
+}
+
+@keyframes borderGlow {
+  0% {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  50% {
+    border-color: rgba(200, 155, 60, 0.45);
+  }
+
+  100% {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* Utility Animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-blob-pulse {
+  animation: pulseBlob 20s ease-in-out infinite;
+}
+
+/* Frosted Glassmorphism Card (28px border radius, 20px blur) */
+.frosted-glass {
+  background: rgba(6, 43, 4, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+}
+
+/* Glass Navbar styling */
+.glass-nav {
+  background: rgba(11, 28, 9, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Golden text and gradient highlights */
+.gold-text-gradient {
+  background: linear-gradient(135deg, #C89B3C 0%, #E2C36B 50%, #C89B3C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.emerald-glow {
+  box-shadow: 0 0 40px rgba(45, 122, 99, 0.15);
+}
+
+.gold-glow {
+  box-shadow: 0 0 35px rgba(200, 155, 60, 0.12);
+}
+
+.gold-glow-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gold-glow-hover:hover {
+  border-color: rgba(200, 155, 60, 0.4);
+  box-shadow: 0 0 40px rgba(200, 155, 60, 0.22);
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* Hide scrollbar for category items */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Clean light website typography and layouts overrides */
+body {
+  color: #111827 !important;
+}
+
+/* Force all text-white and opacity variations to be dark grey/black, except primary brand text */
+.text-white:not(.text-primary),
+h1:not(.text-primary),
+h2:not(.text-primary),
+h3:not(.text-primary),
+h4:not(.text-primary),
+h5:not(.text-primary),
+h6:not(.text-primary),
+.text-white\/90:not(.text-primary),
+.text-white\/80:not(.text-primary),
+.text-white\/70:not(.text-primary),
+.text-white\/60:not(.text-primary) {
+  color: #111827;
+}
+
+.text-white\/50,
+.text-white\/40,
+.text-muted {
+  color: #4B5563;
+}
+
+/* Soft borders */
+.border-white\/5,
+.border-white\/10,
+.border-white\/20,
+.divide-white\/5,
+.divide-white\/10 {
+  border-color: #E5E7EB !important;
+}
+
+/* Frosted glass cards */
+.frosted-glass {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #111827 !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Glass Navbar */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #111827 !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05) !important;
+}
+
+.glass-nav span,
+.glass-nav a,
+.glass-nav button {
+  color: #374151 !important;
+}
+
+.glass-nav a:hover,
+.glass-nav button:hover {
+  color: #062B04 !important;
+}
+
+.glass-nav .text-primary {
+  color: #062B04 !important;
+}
+
+/* Input fields overrides */
+input,
+select,
+textarea {
+  background-color: #FFFFFF !important;
+  border: 1px solid #D1D5DB !important;
+  color: #111827 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  background-color: #FFFFFF !important;
+  border-color: #062B04 !important;
+  box-shadow: 0 0 0 3px rgba(6, 43, 4, 0.2) !important;
+  outline: none !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9CA3AF !important;
+}
+
+/* Section background alternates */
+.bg-secondary {
+  background-color: #FFFFFF !important;
+}
+
+.bg-dark {
+  background-color: #F3F4F6 !important;
+}
+
+.bg-white\/5 {
+  background-color: #EEF2F6 !important;
+}
+
+.bg-white\/5:hover {
+  background-color: #E2E8F0 !important;
+}
+
+/* Footer layout color fixes */
+footer,
+footer * {
+  color: #374151 !important;
+}
+
+footer .text-primary {
+  color: #B1A96E !important;
+}
+
+footer .border-white\/5 {
+  border-color: #E5E7EB !important;
+}
+
+/* Force all elements with primary green background or black background, and their nested elements, to use white text for readability */
+.bg-primary,
+.bg-primary *,
+button.bg-primary,
+button.bg-primary *,
+a.bg-primary,
+a.bg-primary *,
+.bg-black,
+.bg-black *,
+button.bg-black,
+button.bg-black *,
+a.bg-black,
+a.bg-black *,
+.absolute.bg-black\/70,
+.absolute.bg-black\/70 *,
+.absolute.bg-primary\/90,
+.absolute.bg-primary\/90 *,
+[class*="opacity-0"] *,
+.group:hover [class*="opacity-100"] * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Override hardcoded dark grey backgrounds to be light theme compliant */
+.bg-\[\#111111\],
+.bg-\[\#111111\]\/85,
+.bg-\[\#111111\]\/70,
+.bg-\[\#111111\]\/60,
+.bg-\[\#151515\],
+.bg-\[\#0e0e0e\]\/50,
+.bg-\[\#050505\] {
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  border-color: #E5E7EB !important;
+}
+
+/* Page Header Banners (usually bg-[#111111] with py-16 or py-20) */
+section.bg-\[\#111111\], 
+div.bg-\[\#111111\],
+section.bg-\[\#111111\]\/70,
+div.bg-\[\#111111\]\/70,
+section.bg-\[\#111111\]\/60,
+div.bg-\[\#111111\]\/60,
+section.bg-\[\#151515\],
+div.bg-\[\#151515\] {
+  background-color: #F3F4F6 !important;
+  background: #F3F4F6 !important;
+  border-color: #E5E7EB !important;
+}
+
+/* Force all elements inside the hero section and standard page headers to be dark grey/black */
+.relative.bg-dark h1,
+.relative.bg-dark h2,
+.relative.bg-dark h3,
+.relative.bg-dark p,
+.relative.bg-dark span:not(.text-primary) {
+  color: #111827 !important;
+}
+
+/* Accent gold gradient headers on light background */
+.gold-text-gradient {
+  background: linear-gradient(135deg, #062B04 0%, #B1A96E 50%, #062B04 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Force outline buttons to be green border and green text on light theme */
+a.border-white\/20,
+button.border-white\/20,
+a.border,
+button.border {
+  border-color: #062B04 !important;
+  color: #062B04 !important;
+}
+
+a.border-white\/20:hover,
+button.border-white\/20:hover,
+a.border:hover,
+button.border:hover {
+  background-color: rgba(6, 43, 4, 0.08) !important;
+  color: #062B04 !important;
+}
+
+/* Force floating cards, glass panels and dialog overlay boxes to use dark text */
+.frosted-glass,
+.frosted-glass *,
+.glass-card,
+.glass-card * {
+  color: #111827 !important;
+}
+
+.frosted-glass .text-muted,
+.glass-card .text-muted {
+  color: #6B7280 !important;
+}
+
+.frosted-glass .text-primary,
+.glass-card .text-primary {
+  color: #062B04 !important;
+}
+
+/* Global Navbar link overrides to force dark grey text */
+header nav a,
+header a:not(.bg-primary),
+header button {
+  color: #374151 !important;
+}
+
+header nav a:hover,
+header a:not(.bg-primary):hover,
+header button:hover {
+  color: #062B04 !important;
+}
+
+header nav a.text-primary,
+header a.text-primary {
+  color: #062B04 !important;
+}
+
+/* Force active link indicator to be primary green */
+header nav span.bg-primary {
+  background-color: #062B04 !important;
+}
+
+/* Force all elements inside dark-background image wash banners (like BookingCTA) to remain white */
+.booking-cta-section,
+.booking-cta-section *,
+.booking-cta-section h2:not(.text-primary),
+.booking-cta-section p:not(.text-primary),
+.booking-cta-section span:not(.text-primary) {
+  color: #ffffff !important;
+}
+
+.booking-cta-section .text-primary {
+  color: #B1A96E !important;
+}
+
+.booking-cta-section .text-muted {
+  color: #BEBEBE !important;
+}
