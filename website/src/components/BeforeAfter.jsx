@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { FaArrowsAltH } from "react-icons/fa";
+import kajalImg from "../assets/IMG_5662.jpg";
 
 export default function BeforeAfter() {
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -44,7 +45,7 @@ export default function BeforeAfter() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-primary/2 filter blur-3xl pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-12">
           <div className="flex items-center space-x-2 mb-3">
@@ -75,7 +76,7 @@ export default function BeforeAfter() {
             alt="Before Treatment"
             className="absolute inset-0 w-full h-full object-cover pointer-events-none"
           />
-          <div className="absolute top-4 left-4 z-20 px-3 py-1 bg-black/80 backdrop-blur-xs text-white text-xs font-bold font-sans uppercase tracking-widest rounded border border-white/10">
+          <div className="absolute top-4 left-4 z-20 px-3 py-1 bg-primary backdrop-blur-xs text-white text-xs font-bold font-sans uppercase tracking-widest rounded border border-white/10">
             Before
           </div>
 
@@ -85,9 +86,9 @@ export default function BeforeAfter() {
             style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
           >
             <img
-              src={afterImage}
+              src={kajalImg}
               alt="After Makeup"
-              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+              className="absolute inset-0 w-full h-[1000px] object-cover pointer-events-none"
               style={{ width: containerRef.current ? containerRef.current.offsetWidth : "100%" }}
             />
             <div className="absolute top-4 right-4 z-20 px-3 py-1 bg-primary text-black text-xs font-bold font-sans uppercase tracking-widest rounded border border-primary/20">

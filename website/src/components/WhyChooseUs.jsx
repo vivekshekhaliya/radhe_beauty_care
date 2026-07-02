@@ -41,19 +41,19 @@ export default function WhyChooseUs() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16">
-        
+
         {/* Left Col: Sticky visual header */}
         <div className="lg:col-span-5 lg:sticky lg:top-36 h-fit flex flex-col space-y-6 text-center lg:text-left">
           <div className="flex items-center justify-center lg:justify-start space-x-2">
             <span className="w-8 h-[1px] bg-primary"></span>
             <span className="text-xs font-bold uppercase tracking-widest text-primary font-sans">Brand Values</span>
           </div>
-          
+
           <h2 className="text-4xl sm:text-5xl font-serif font-black leading-tight text-white">
             An Unmatched <br />
             Beauty <span className="gold-text-gradient font-serif italic">Standards</span>
           </h2>
-          
+
           <p className="text-sm sm:text-base text-muted font-sans leading-relaxed max-w-md mx-auto lg:mx-0 font-light">
             We merge premium cosmetology treatments with high-end artistry to provide a tailored beauty session that makes a statement.
           </p>
@@ -79,7 +79,7 @@ export default function WhyChooseUs() {
                 <div className="w-12 h-12 rounded-[16px] bg-primary/10 border border-primary/25 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-colors duration-300 mb-6 shrink-0 shadow-sm">
                   <IconComponent className="w-5 h-5" />
                 </div>
-                
+
                 <div>
                   <h3 className="text-lg font-serif font-bold text-white mb-2 group-hover:text-primary transition-colors">
                     {item.title}
