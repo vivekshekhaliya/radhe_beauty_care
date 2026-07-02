@@ -167,11 +167,10 @@ const GalleryCategoryCRUD: React.FC = () => {
     {
       header: 'Status',
       accessor: (row: GalleryCategory) => (
-        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-          row.status === 'active' 
-            ? 'text-green-400 bg-green-500/10 border border-green-500/10' 
+        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${row.status === 'active'
+            ? 'text-green-400 bg-green-500/10 border border-green-500/10'
             : 'text-muted bg-white/5 border border-white/5'
-        }`}>
+          }`}>
           {row.status}
         </span>
       ),
@@ -201,7 +200,7 @@ const GalleryCategoryCRUD: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      
+
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 className="text-2xl font-serif font-bold text-white tracking-wide">Gallery Categories</h2>
@@ -217,7 +216,7 @@ const GalleryCategoryCRUD: React.FC = () => {
         </button>
       </div>
 
-      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-6 sm:p-8">
+      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-4 sm:p-6">
         <Table
           columns={columns}
           data={categories}
@@ -237,7 +236,7 @@ const GalleryCategoryCRUD: React.FC = () => {
         size="md"
       >
         <form onSubmit={handleSubmit} className="space-y-5 font-sans">
-          
+
           <div className="flex flex-col gap-2">
             <label className="text-[10px] font-extrabold uppercase tracking-widest text-primary">Category Name *</label>
             <input

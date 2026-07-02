@@ -44,7 +44,7 @@ const GalleryCRUD: React.FC = () => {
   // Modals state
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  
+
   // Create / Upload Form State
   const [uploadFormData, setUploadFormData] = useState({
     category_id: '',
@@ -120,7 +120,7 @@ const GalleryCRUD: React.FC = () => {
   }, [page, selectedCatFilter, selectedStatusFilter]);
 
   const handleSelectRow = (id: number) => {
-    setSelectedIds(prev => 
+    setSelectedIds(prev =>
       prev.includes(id) ? prev.filter(rowId => rowId !== id) : [...prev, id]
     );
   };
@@ -303,9 +303,9 @@ const GalleryCRUD: React.FC = () => {
       header: 'Image Thumbnail',
       accessor: (row: GalleryImage) => (
         <div className="w-14 aspect-square rounded-lg overflow-hidden border border-white/10 bg-dark relative">
-          <img 
-            src={row.image_path.startsWith('http') ? row.image_path : `http://localhost:8000/storage/${row.image_path}`} 
-            alt={row.alt_text || row.title || 'Gallery'} 
+          <img
+            src={row.image_path.startsWith('http') ? row.image_path : `http://localhost:8000/storage/${row.image_path}`}
+            alt={row.alt_text || row.title || 'Gallery'}
             className="w-full h-full object-cover"
           />
         </div>
@@ -325,11 +325,10 @@ const GalleryCRUD: React.FC = () => {
     {
       header: 'Featured',
       accessor: (row: GalleryImage) => (
-        <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest ${
-          row.featured 
-            ? 'text-primary bg-primary/10 border border-primary/20' 
+        <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest ${row.featured
+            ? 'text-primary bg-primary/10 border border-primary/20'
             : 'text-muted bg-white/5 border border-white/5'
-        }`}>
+          }`}>
           {row.featured ? 'Yes' : 'No'}
         </span>
       ),
@@ -338,11 +337,10 @@ const GalleryCRUD: React.FC = () => {
     {
       header: 'Status',
       accessor: (row: GalleryImage) => (
-        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-          row.status === 'active' 
-            ? 'text-green-400 bg-green-500/10 border border-green-500/10' 
+        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${row.status === 'active'
+            ? 'text-green-400 bg-green-500/10 border border-green-500/10'
             : 'text-muted bg-white/5 border border-white/5'
-        }`}>
+          }`}>
           {row.status}
         </span>
       ),
@@ -372,7 +370,7 @@ const GalleryCRUD: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      
+
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -429,7 +427,7 @@ const GalleryCRUD: React.FC = () => {
       </div>
 
       {/* Table grid */}
-      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-6 sm:p-8">
+      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-4 sm:p-6">
         <Table
           columns={columns}
           data={images}
@@ -482,7 +480,7 @@ const GalleryCRUD: React.FC = () => {
                 className="px-4 py-3 bg-[#050505] border border-white/10 focus:border-primary text-white outline-none rounded-xl text-sm"
               />
             </div>
-            
+
             {/* Alt text */}
             <div className="flex flex-col gap-2">
               <label className="text-[10px] font-extrabold uppercase tracking-widest text-primary">SEO Alt Text</label>
@@ -536,7 +534,7 @@ const GalleryCRUD: React.FC = () => {
           {/* Files Upload drag-drop Selector */}
           <div className="flex flex-col gap-3">
             <label className="text-[10px] font-extrabold uppercase tracking-widest text-primary">Choose Image Files *</label>
-            <div 
+            <div
               onClick={() => fileInputRef.current?.click()}
               className="border border-dashed border-white/10 hover:border-primary/40 hover:bg-white/[0.01] rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-colors"
             >

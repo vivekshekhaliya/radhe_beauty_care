@@ -23,16 +23,16 @@ interface Booking {
 const BookingsCRUD: React.FC = () => {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   // Filtering & Pager
   const [search, setSearch] = useState('');
   const [selectedStatusFilter, setSelectedStatusFilter] = useState('');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
-  
+
   const [sortBy, setSortBy] = useState('created_at');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
-  
+
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
@@ -90,7 +90,7 @@ const BookingsCRUD: React.FC = () => {
   };
 
   const handleSelectRow = (id: number) => {
-    setSelectedIds(prev => 
+    setSelectedIds(prev =>
       prev.includes(id) ? prev.filter(rowId => rowId !== id) : [...prev, id]
     );
   };
@@ -108,12 +108,12 @@ const BookingsCRUD: React.FC = () => {
       const response = await api.put(`/bookings/${id}/status`, { status: newStatus });
       if (response.data.success) {
         toast.success('Booking status updated.');
-        
+
         // Update local state if details modal is open
         if (selectedBooking && selectedBooking.id === id) {
           setSelectedBooking({ ...selectedBooking, status: newStatus as any });
         }
-        
+
         fetchBookings();
       }
     } catch (error) {
@@ -183,7 +183,7 @@ const BookingsCRUD: React.FC = () => {
         },
         responseType: 'blob', // Tell Axios to treat output as file stream
       });
-      
+
       const blob = new Blob([response.data], { type: 'text/csv' });
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -192,7 +192,7 @@ const BookingsCRUD: React.FC = () => {
       document.body.appendChild(link);
       link.click();
       link.remove();
-      
+
       toast.dismiss('csv-export');
       toast.success('CSV Export downloaded successfully.');
     } catch (error) {
@@ -254,9 +254,8 @@ const BookingsCRUD: React.FC = () => {
     {
       header: 'Status',
       accessor: (row: Booking) => (
-        <span className={`px-2.5 py-0.5 rounded-full border text-[9px] font-extrabold uppercase tracking-widest ${
-          statusColors[row.status]
-        }`}>
+        <span className={`px-2.5 py-0.5 rounded-full border text-[9px] font-extrabold uppercase tracking-widest ${statusColors[row.status]
+          }`}>
           {row.status}
         </span>
       ),
@@ -288,7 +287,7 @@ const BookingsCRUD: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      
+
       {/* Page Title */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -307,7 +306,7 @@ const BookingsCRUD: React.FC = () => {
 
       {/* Filter and Bulk Bar */}
       <div className="glass-card p-4 rounded-2xl border border-white/5 flex flex-col md:flex-row justify-between gap-4 font-sans items-center">
-        
+
         {/* Left Filters */}
         <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
           {/* Search */}
@@ -391,7 +390,7 @@ const BookingsCRUD: React.FC = () => {
       </div>
 
       {/* Bookings Table */}
-      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-6 sm:p-8">
+      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-4 sm:p-6">
         <Table
           columns={columns}
           data={bookings}
@@ -487,11 +486,10 @@ const BookingsCRUD: React.FC = () => {
                   <button
                     key={st}
                     onClick={() => handleUpdateStatus(selectedBooking.id, st)}
-                    className={`px-3 py-1.5 rounded-lg border text-[9px] font-bold uppercase tracking-wider cursor-pointer transition-all ${
-                      selectedBooking.status === st
+                    className={`px-3 py-1.5 rounded-lg border text-[9px] font-bold uppercase tracking-wider cursor-pointer transition-all ${selectedBooking.status === st
                         ? statusColors[st as keyof typeof statusColors] + ' scale-105 border-primary/60'
                         : 'bg-transparent text-muted hover:text-white border-white/5 hover:bg-white/5'
-                    }`}
+                      }`}
                   >
                     {st}
                   </button>

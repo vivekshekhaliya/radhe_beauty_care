@@ -41,10 +41,10 @@ const ServiceCRUD: React.FC = () => {
   const [selectedCatFilter, setSelectedCatFilter] = useState('');
   const [selectedStatusFilter, setSelectedStatusFilter] = useState('');
   const [selectedFeaturedFilter, setSelectedFeaturedFilter] = useState('');
-  
+
   const [sortBy, setSortBy] = useState('display_order');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
-  
+
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
@@ -52,7 +52,7 @@ const ServiceCRUD: React.FC = () => {
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editId, setEditId] = useState<number | null>(null);
-  
+
   // Media Manager Modal State
   const [isMediaModalOpen, setIsMediaModalOpen] = useState(false);
   const [mediaTarget, setMediaTarget] = useState<'featured_image' | null>(null);
@@ -145,7 +145,7 @@ const ServiceCRUD: React.FC = () => {
 
   // Row selection helpers
   const handleSelectRow = (id: number) => {
-    setSelectedIds(prev => 
+    setSelectedIds(prev =>
       prev.includes(id) ? prev.filter(rowId => rowId !== id) : [...prev, id]
     );
   };
@@ -253,9 +253,9 @@ const ServiceCRUD: React.FC = () => {
       // if (isset($data['featured_image']) && $data['featured_image'] instanceof UploadedFile) { ... }
       // Else it will just save the string path. If we pass the image url/path, it will be saved correctly!
       // This matches perfectly!
-      
+
       const payload = { ...formData };
-      
+
       if (editId) {
         const response = await api.post(`/services/${editId}`, payload); // use POST with method override or standard POST route since we defined POST for updates in api.php
         if (response.data.success) {
@@ -326,9 +326,9 @@ const ServiceCRUD: React.FC = () => {
       accessor: (row: Service) => (
         <div className="w-10 h-10 rounded-lg overflow-hidden border border-white/10 bg-dark flex items-center justify-center shrink-0">
           {row.featured_image ? (
-            <img 
-              src={row.featured_image.startsWith('http') ? row.featured_image : `http://localhost:8000/storage/${row.featured_image}`} 
-              alt={row.title} 
+            <img
+              src={row.featured_image.startsWith('http') ? row.featured_image : `http://localhost:8000/storage/${row.featured_image}`}
+              alt={row.title}
               className="w-full h-full object-cover"
             />
           ) : (
@@ -365,11 +365,10 @@ const ServiceCRUD: React.FC = () => {
     {
       header: 'Featured',
       accessor: (row: Service) => (
-        <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest ${
-          row.featured 
-            ? 'text-primary bg-primary/10 border border-primary/20' 
-            : 'text-muted bg-white/5 border border-white/5'
-        }`}>
+        <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest ${row.featured
+          ? 'text-primary bg-primary/10 border border-primary/20'
+          : 'text-muted bg-white/5 border border-white/5'
+          }`}>
           {row.featured ? 'Yes' : 'No'}
         </span>
       ),
@@ -380,11 +379,10 @@ const ServiceCRUD: React.FC = () => {
     {
       header: 'Status',
       accessor: (row: Service) => (
-        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-          row.status === 'active' 
-            ? 'text-green-400 bg-green-500/10 border border-green-500/10' 
-            : 'text-muted bg-white/5 border border-white/5'
-        }`}>
+        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${row.status === 'active'
+          ? 'text-green-400 bg-green-500/10 border border-green-500/10'
+          : 'text-muted bg-white/5 border border-white/5'
+          }`}>
           {row.status}
         </span>
       ),
@@ -416,7 +414,7 @@ const ServiceCRUD: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      
+
       {/* Header section */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -435,7 +433,7 @@ const ServiceCRUD: React.FC = () => {
 
       {/* Filter and Bulk Operations Bar */}
       <div className="glass-card p-4 rounded-2xl border border-white/5 flex flex-col md:flex-row justify-between gap-4 font-sans items-center">
-        
+
         {/* Left Side: Filter inputs */}
         <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
           {/* Search */}
@@ -517,7 +515,7 @@ const ServiceCRUD: React.FC = () => {
       </div>
 
       {/* Main Table */}
-      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-6 sm:p-8">
+      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-4 sm:p-6">
         <Table
           columns={columns}
           data={services}
@@ -545,9 +543,9 @@ const ServiceCRUD: React.FC = () => {
         size="xl"
       >
         <form onSubmit={handleSubmit} className="space-y-6 font-sans">
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
+
             {/* Left side: basic details */}
             <div className="space-y-5">
               {/* Title */}
@@ -672,9 +670,9 @@ const ServiceCRUD: React.FC = () => {
                 {/* Thumbnail Preview */}
                 {formData.featured_image && (
                   <div className="mt-2 w-32 aspect-video rounded-lg overflow-hidden border border-white/10 bg-dark relative group">
-                    <img 
-                      src={formData.featured_image.startsWith('http') ? formData.featured_image : `http://localhost:8000/storage/${formData.featured_image}`} 
-                      alt="Preview" 
+                    <img
+                      src={formData.featured_image.startsWith('http') ? formData.featured_image : `http://localhost:8000/storage/${formData.featured_image}`}
+                      alt="Preview"
                       className="w-full h-full object-cover"
                     />
                     <button

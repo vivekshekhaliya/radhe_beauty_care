@@ -20,7 +20,7 @@ const CategoryCRUD: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
-  
+
   // Table state
   const [sortBy, setSortBy] = useState('display_order');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
@@ -110,7 +110,7 @@ const CategoryCRUD: React.FC = () => {
     const errors: Record<string, string> = {};
     if (!formData.name.trim()) errors.name = 'Name is required.';
     if (formData.display_order < 0) errors.display_order = 'Display order must be 0 or greater.';
-    
+
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -200,11 +200,10 @@ const CategoryCRUD: React.FC = () => {
     {
       header: 'Status',
       accessor: (row: Category) => (
-        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-          row.status === 'active' 
-            ? 'text-green-400 bg-green-500/10 border border-green-500/10' 
-            : 'text-muted bg-white/5 border border-white/5'
-        }`}>
+        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${row.status === 'active'
+          ? 'text-green-400 bg-green-500/10 border border-green-500/10'
+          : 'text-muted bg-white/5 border border-white/5'
+          }`}>
           {row.status}
         </span>
       ),
@@ -236,7 +235,7 @@ const CategoryCRUD: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      
+
       {/* Header section */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -254,7 +253,7 @@ const CategoryCRUD: React.FC = () => {
       </div>
 
       {/* Main Table */}
-      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-6 sm:p-8">
+      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-4 sm:p-6">
         <Table
           columns={columns}
           data={categories}

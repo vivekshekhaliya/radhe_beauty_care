@@ -22,7 +22,7 @@ const BridalCRUD: React.FC = () => {
   const [packages, setPackages] = useState<Package[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitLoading, setIsSubmitLoading] = useState(false);
-  
+
   // Table state
   const [sortBy, setSortBy] = useState('display_order');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
@@ -138,7 +138,7 @@ const BridalCRUD: React.FC = () => {
     if (!formData.title.trim()) errors.title = 'Title is required.';
     if (formData.price < 0) errors.price = 'Price must be 0 or positive.';
     if (formData.display_order < 0) errors.display_order = 'Order must be 0 or positive.';
-    
+
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -234,11 +234,10 @@ const BridalCRUD: React.FC = () => {
     {
       header: 'Featured',
       accessor: (row: Package) => (
-        <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest ${
-          row.featured 
-            ? 'text-primary bg-primary/10 border border-primary/20' 
+        <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest ${row.featured
+            ? 'text-primary bg-primary/10 border border-primary/20'
             : 'text-muted bg-white/5 border border-white/5'
-        }`}>
+          }`}>
           {row.featured ? 'Yes' : 'No'}
         </span>
       ),
@@ -247,11 +246,10 @@ const BridalCRUD: React.FC = () => {
     {
       header: 'Status',
       accessor: (row: Package) => (
-        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-          row.status === 'active' 
-            ? 'text-green-400 bg-green-500/10 border border-green-500/10' 
+        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${row.status === 'active'
+            ? 'text-green-400 bg-green-500/10 border border-green-500/10'
             : 'text-muted bg-white/5 border border-white/5'
-        }`}>
+          }`}>
           {row.status}
         </span>
       ),
@@ -283,7 +281,7 @@ const BridalCRUD: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      
+
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 className="text-2xl font-serif font-bold text-white tracking-wide">Bridal Packages</h2>
@@ -299,7 +297,7 @@ const BridalCRUD: React.FC = () => {
         </button>
       </div>
 
-      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-6 sm:p-8">
+      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-4 sm:p-6">
         <Table
           columns={columns}
           data={packages}
@@ -322,7 +320,7 @@ const BridalCRUD: React.FC = () => {
         size="lg"
       >
         <form onSubmit={handleSubmit} className="space-y-5 font-sans">
-          
+
           {/* Title */}
           <div className="flex flex-col gap-2">
             <label className="text-[10px] font-extrabold uppercase tracking-widest text-primary">Package Title *</label>

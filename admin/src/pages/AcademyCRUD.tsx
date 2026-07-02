@@ -138,7 +138,7 @@ const AcademyCRUD: React.FC = () => {
     const errors: Record<string, string> = {};
     if (!formData.title.trim()) errors.title = 'Title is required.';
     if (formData.price < 0) errors.price = 'Price must be 0 or positive.';
-    
+
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -218,9 +218,9 @@ const AcademyCRUD: React.FC = () => {
       accessor: (row: Course) => (
         <div className="w-10 h-10 rounded-lg overflow-hidden border border-white/10 bg-dark flex items-center justify-center shrink-0">
           {row.course_image ? (
-            <img 
-              src={row.course_image.startsWith('http') ? row.course_image : `http://localhost:8000/storage/${row.course_image}`} 
-              alt={row.title} 
+            <img
+              src={row.course_image.startsWith('http') ? row.course_image : `http://localhost:8000/storage/${row.course_image}`}
+              alt={row.title}
               className="w-full h-full object-cover"
             />
           ) : (
@@ -248,11 +248,10 @@ const AcademyCRUD: React.FC = () => {
     {
       header: 'Certificate',
       accessor: (row: Course) => (
-        <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest ${
-          row.certificate_available 
-            ? 'text-green-400 bg-green-500/10 border border-green-500/10' 
+        <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest ${row.certificate_available
+            ? 'text-green-400 bg-green-500/10 border border-green-500/10'
             : 'text-muted bg-white/5 border border-white/5'
-        }`}>
+          }`}>
           {row.certificate_available ? 'Available' : 'No'}
         </span>
       ),
@@ -261,11 +260,10 @@ const AcademyCRUD: React.FC = () => {
     {
       header: 'Featured',
       accessor: (row: Course) => (
-        <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest ${
-          row.featured 
-            ? 'text-primary bg-primary/10 border border-primary/20' 
+        <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest ${row.featured
+            ? 'text-primary bg-primary/10 border border-primary/20'
             : 'text-muted bg-white/5 border border-white/5'
-        }`}>
+          }`}>
           {row.featured ? 'Yes' : 'No'}
         </span>
       ),
@@ -274,11 +272,10 @@ const AcademyCRUD: React.FC = () => {
     {
       header: 'Status',
       accessor: (row: Course) => (
-        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-          row.status === 'active' 
-            ? 'text-green-400 bg-green-500/10 border border-green-500/10' 
+        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${row.status === 'active'
+            ? 'text-green-400 bg-green-500/10 border border-green-500/10'
             : 'text-muted bg-white/5 border border-white/5'
-        }`}>
+          }`}>
           {row.status}
         </span>
       ),
@@ -308,7 +305,7 @@ const AcademyCRUD: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      
+
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 className="text-2xl font-serif font-bold text-white tracking-wide">Academy Courses</h2>
@@ -324,7 +321,7 @@ const AcademyCRUD: React.FC = () => {
         </button>
       </div>
 
-      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-6 sm:p-8">
+      <div className="bg-[#0e0e0e]/50 border border-white/5 rounded-3xl p-4 sm:p-6">
         <Table
           columns={columns}
           data={courses}
@@ -344,11 +341,11 @@ const AcademyCRUD: React.FC = () => {
         size="xl"
       >
         <form onSubmit={handleSubmit} className="space-y-5 font-sans">
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Left Column */}
             <div className="space-y-5">
-              
+
               {/* Title */}
               <div className="flex flex-col gap-2">
                 <label className="text-[10px] font-extrabold uppercase tracking-widest text-primary">Course Title *</label>
@@ -466,9 +463,9 @@ const AcademyCRUD: React.FC = () => {
                 </div>
                 {formData.course_image && (
                   <div className="mt-2 w-36 aspect-[4/3] rounded-lg overflow-hidden border border-white/10 bg-dark relative group">
-                    <img 
-                      src={formData.course_image.startsWith('http') ? formData.course_image : `http://localhost:8000/storage/${formData.course_image}`} 
-                      alt="Course Preview" 
+                    <img
+                      src={formData.course_image.startsWith('http') ? formData.course_image : `http://localhost:8000/storage/${formData.course_image}`}
+                      alt="Course Preview"
                       className="w-full h-full object-cover"
                     />
                     <button
@@ -486,7 +483,7 @@ const AcademyCRUD: React.FC = () => {
 
             {/* Right Column: Description & Syllabus */}
             <div className="space-y-5">
-              
+
               {/* Description */}
               <div className="flex flex-col gap-2">
                 <label className="text-[10px] font-extrabold uppercase tracking-widest text-primary">Course Description</label>

@@ -13,7 +13,7 @@ interface TableProps<T> {
   columns: Column<T>[];
   data: T[];
   isLoading?: boolean;
-  
+
   // Sorting
   sortBy?: string;
   sortOrder?: 'asc' | 'desc';
@@ -51,7 +51,7 @@ function Table<T>({
   onPageChange,
   emptyMessage = 'No records found.',
 }: TableProps<T>) {
-  
+
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onSelectAll) {
       onSelectAll(e.target.checked);
@@ -157,9 +157,8 @@ function Table<T>({
                 return (
                   <tr
                     key={rIdx}
-                    className={`hover:bg-white/[0.02] transition-colors ${
-                      isSelected ? 'bg-primary/5 hover:bg-primary/10' : ''
-                    }`}
+                    className={`hover:bg-white/[0.02] transition-colors ${isSelected ? 'bg-primary/5 hover:bg-primary/10' : ''
+                      }`}
                   >
                     {/* Checkbox Cell */}
                     {onSelectRow && (
@@ -228,11 +227,10 @@ function Table<T>({
                     <button
                       key={pageNum}
                       onClick={() => onPageChange(pageNum)}
-                      className={`w-8 h-8 rounded-lg text-xs font-sans font-bold flex items-center justify-center cursor-pointer transition-colors ${
-                        currentPage === pageNum
+                      className={`w-8 h-8 rounded-lg text-xs font-sans font-bold flex items-center justify-center cursor-pointer transition-colors ${currentPage === pageNum
                           ? 'bg-primary text-black font-extrabold shadow-md'
                           : 'bg-transparent border border-white/5 text-muted hover:text-white hover:bg-white/5'
-                      }`}
+                        }`}
                     >
                       {pageNum}
                     </button>
